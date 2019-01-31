@@ -1,12 +1,5 @@
 # Docker-Compose File for Drupal with Postgres
 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Docker_%28container_engine%29_logo.svg/330px-Docker_%28container_engine%29_logo.svg.png" alt="Drupal logo" height="100"/>
-
-<img src="https://www.drupal.org/files/druplicon-small.png" alt="Drupal logo" height="100"/>
- 
-<img src="https://wiki.postgresql.org/images/3/30/PostgreSQL_logo.3colors.120x120.png" alt="PostgreSQL logo" height="100"/>
-
-
 ## Basic info
 
 The provided `docker-compose.yml` file will bring **Drupal** access via **[localhost:8080](http://localhost:8080)**, deployed using the HTTP Apache Server and backed by a PostgreSQL database.
