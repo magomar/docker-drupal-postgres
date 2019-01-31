@@ -1,8 +1,8 @@
 # Docker-Compose File for Drupal with Postgres
 
-## Some info on the docker container
+## Basic info
 
-This docker-compose file will bring Drupal access via **http://localhost:8080**.
+The provided `docker-compose.yml` file will bring **Drupal** access via **http://localhost:8080**, deployed using the HTTP Apache Server and backed by a PostgreSQL database.
 
 Typically, drupal container is started with:
 
@@ -44,9 +44,8 @@ version: '3'
 
 services:
   drupal:
-    image: drupal
-    ports:
-      -"8080:80"
+    image: drupalports:
+      - 8080:80
     volumes:
       - drupal-modules:/var/www/html/modules
       - drupal-profiles:/var/www/html/profiles
@@ -68,17 +67,17 @@ Note:
 
 ## Setting up drupal
 
--Run the docker-compose with
+Being in the directory container the docker-compose.yml file, execute:
 
     docker-compose up
 
--Walk though Drupal config in browser at http://localhost:8080
+Walk though Drupal config in browser at http://localhost:8080
 
 When installing select postgres as database with the following parameters:
 
-- dbname: postgres
-- user: postgres
-- password: example-pwd
-- hostname: postgres
-
-## Extra Credit: Use volumes to store Drupal unique data
+| field | value |
+|---|---|
+| dbname | postgres |
+| user | postgres |
+| password | example-pwd |
+| hostname | postgres |
