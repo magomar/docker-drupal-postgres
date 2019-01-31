@@ -81,3 +81,15 @@ When installing select postgres as database with the following parameters:
 | user | postgres |
 | password | example-pwd |
 | hostname | postgres |
+
+**Note**: hostname is found under *Advanced options*
+
+## Stopping the containers
+
+To stop running the containers execute
+
+    docker-compose down
+
+In order to also remove the volumes add option --volumes (-v), as follows
+
+    docker-compose down -v
