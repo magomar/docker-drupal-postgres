@@ -12,7 +12,7 @@ To connect Drupal with PostgreSQL:
 
     docker run --name some-drupal --link some-postgres:postgres -d drupal
 
-In order to work with volumes, you are referred to the  [documentation](https://hub.docker.com/_/drupal/). For example, to use named volumes and assuming your sites are located in your host machine at `/var/www/html/sites`:
+This image does not include any predefined volumes (refer to [docker-library/drupal#3](https://github.com/docker-library/drupal/issues/3) for a discusion on this topic), but there are several ways to define them when running the container, as described in the [documentation](https://hub.docker.com/_/drupal/). For example, assuming we have some sites located in our host machine at `/var/www/html/sites`, we could define the following volumes:
 
 ```sh
 docker volume create drupal-sites && \
@@ -25,15 +25,15 @@ docker run --name some-drupal --link some-postgres:postgres -d \
     drupal
 ```
 
-In order to ease the process, this project provides a simple docker-compose file that executes all the necessary steps acording to the former setup and the named volumes approach.
+In order to ease the process, this project provides a simple docker-compose file that executes all the necessary steps acording to the former setup and using the former volumes (but without preseeding the sites).
 
 ## Create docker-compose file
 
 - Create `docker-compose.yml` using version 3
 - Use two images: official latest `drupal:latest` image along with the official `postgres:latest` image
-- Use `ports` to expose Drupal on 8080
+- Use `ports` to expose Drupal on port 8080
 - Create volumes (here I'm using named volumes)
-- Setup POSTGRES_PASSWORD on postgres image to `example-pwd`
+- Setup POSTGRES_PASSWORD on postgres image to `postgres`
 
 For additional info check documentation: 
 -[Drupal on dockerhub](https://hub.docker.com/_/drupal/)
@@ -54,7 +54,7 @@ services:
   postgres:
     image: postgres
     environment:
-      POSTGRES_PASSWORD: example-pwd
+      POSTGRES_PASSWORD: postgres
 
 volumes:
   drupal-modules:
@@ -71,7 +71,7 @@ Being in the directory container the docker-compose.yml file, execute:
 
     docker-compose up
 
-Walk though Drupal config in browser at http://localhost:8080
+Walk though Drupal config in browser at <http://localhost:8080>
 
 When installing select postgres as database with the following parameters:
 

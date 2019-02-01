@@ -13,7 +13,7 @@ services:
   postgres:
     image: postgres
     environment: 
-      POSTGRES_PASSWORD: example-pwd
+      POSTGRES_PASSWORD: postgres
 
 volumes:
   drupal-modules:
